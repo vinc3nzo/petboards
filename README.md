@@ -1,3 +1,21 @@
+# Образ Docker
+Существует [Docker образ](https://hub.docker.com/repository/docker/mangasaryanep/petboards/general) данного приложения. Чтобы им воспользоваться,
+нужно его сначала загрузить:
+```bash
+docker pull mangasaryanep/petboards:1.0
+```
+
+Затем образ можно запустить с помощью
+```bash
+docker run -e PETBOARDS_SECRET=super_secret -v 'petboards_data:/opt/petboards/data' -p 8000:8000 -d petboards:1.0
+```
+
+Приложение будет принимать запросы на порте `8000`.
+
+В production-среде настоятельно рекомендуется установить другой `PETBOARDS_SECRET`,
+так как значение этой переменной окружения используется при создании и проверки
+Java Web Token, и ненадежный секрет может поставить под угрозу безопасность приложения.
+
 # Petboards REST API 1.0
 
 # Примеры объектов
