@@ -1,11 +1,57 @@
-# Образ Docker
+# Быстрый старт
+> Требуется Python 3.10.9 или новее, с установленным pip.
+
+Клонируйте репозиторий и перейдите в корневую папку.
+```bash
+git clone git@github.com:vinc3nzo/petboards.git
+cd petboards
+```
+
+Создайте и активируйте виртуальную среду Python:
+- GNU/Linux
+```bash
+cd petboards
+python3 -m venv .venv
+source ./.venv/bin/activate
+```
+- Windows (PowerShell)
+```powershell
+cd petboards
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process Bypass
+.\.venv\Scripts\activate.ps1
+```
+
+Установите зависимости:
+- GNU/Linux
+```bash
+pip3 install -r ../requirements.txt
+```
+- Windows (PowerShell)
+```powershell
+pip install -r ..\requirements.txt
+```
+
+Запустите `gunicorn` сервер:
+- GNU/Linux
+```bash
+PETBOARDS_SECRET=super_secret gunicorn 'petboards.start:app'
+```
+- Windows (PowerShell)
+```powershell
+$env:PETBOARDS_SECRET = 'super_secret'; gunicorn 'petboards.start:app'
+```
+
+Сервер принимает запросы на порте `8000`.
+
+# Docker образ
 Существует [Docker образ](https://hub.docker.com/repository/docker/mangasaryanep/petboards/general) данного приложения. Чтобы им воспользоваться,
 нужно его сначала загрузить:
 ```bash
 docker pull mangasaryanep/petboards:1.0
 ```
 
-Затем образ можно запустить с помощью
+Затем образ можно запустить в контейнере с помощью
 ```bash
 docker run -e PETBOARDS_SECRET=super_secret -v 'petboards_data:/opt/petboards/data' -p 8000:8000 -d petboards:1.0
 ```
