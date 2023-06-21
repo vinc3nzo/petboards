@@ -60,7 +60,7 @@ docker run -e PETBOARDS_SECRET=super_secret -v 'petboards_data:/opt/petboards/da
 
 В production-среде настоятельно рекомендуется установить другой `PETBOARDS_SECRET`,
 так как значение этой переменной окружения используется при создании и проверке
-Java Web Token, и ненадежный секрет может поставить под угрозу безопасность приложения.
+Json Web Token, и ненадежный секрет может поставить под угрозу безопасность приложения.
 
 # Petboards REST API 1.0
 

@@ -10,7 +10,7 @@ import os
 import sys
 
 if os.getenv('PETBOARDS_SECRET') is None:
-    print('The environment variable \'PETBOARDS_SECRET\', which is used as a Secret for the Java Web Token, is not set. Please, consider setting it before running the application.', file=sys.stderr)
+    print('The environment variable \'PETBOARDS_SECRET\', which is used as a secret for the Json Web Token, is not set. Please, consider setting it before running the application.', file=sys.stderr)
     sys.exit(1)
 
 db_engine = sa.create_engine('sqlite:///data/sqlite3.db', echo=True)
